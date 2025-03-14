@@ -1,0 +1,174 @@
+{
+  "advisors": [
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440001",
+      "firstName": "Randall",
+      "lastName": "Le Pouce",
+      "totalAssets": 1234567.89,
+      "totalClients": 12,
+      "totalAccounts": 15,
+      "custodians": [
+        {
+          "id": "c5a06098-8736-4238-983c-2b191ff7f5de",
+          "name": "Schwab",
+          "repId": "1001"
+        },
+        {
+          "id": "77326e8c-08d0-4960-8271-ea430693593e",
+          "name": "Fidelity",
+          "repId": "8989"
+        }
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440002",
+      "firstName": "John",
+      "lastName": "Doe",
+      "totalAssets": 987654.32,
+      "totalClients": 8,
+      "totalAccounts": 10,
+      "custodians": [
+        {
+          "id": "c5a06098-8736-4238-983c-2b191ff7f5de",
+          "name": "Schwab",
+          "repId": "1002"
+        }
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440003",
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "totalAssets": 750000.00,
+      "totalClients": 10,
+      "totalAccounts": 12,
+      "custodians": [
+        {
+          "id": "77326e8c-08d0-4960-8271-ea430693593e",
+          "name": "Fidelity",
+          "repId": "8990"
+        }
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440004",
+      "firstName": "Michael",
+      "lastName": "Johnson",
+      "totalAssets": 500000.00,
+      "totalClients": 6,
+      "totalAccounts": 8,
+      "custodians": [
+        {
+          "id": "c5a06098-8736-4238-983c-2b191ff7f5de",
+          "name": "Schwab",
+          "repId": "1003"
+        },
+        {
+          "id": "77326e8c-08d0-4960-8271-ea430693593e",
+          "name": "Fidelity",
+          "repId": "8991"
+        }
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440005",
+      "firstName": "Emily",
+      "lastName": "Brown",
+      "totalAssets": 300000.00,
+      "totalClients": 5,
+      "totalAccounts": 7,
+      "custodians": [
+        {
+          "id": "77326e8c-08d0-4960-8271-ea430693593e",
+          "name": "Fidelity",
+          "repId": "8992"
+        }
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440006",
+      "firstName": "David",
+      "lastName": "Wilson",
+      "totalAssets": 900000.00,
+      "totalClients": 9,
+      "totalAccounts": 11,
+      "custodians": [
+        {
+          "id": "c5a06098-8736-4238-983c-2b191ff7f5de",
+          "name": "Schwab",
+          "repId": "1004"
+        }
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440007",
+      "firstName": "Sarah",
+      "lastName": "Taylor",
+      "totalAssets": 450000.00,
+      "totalClients": 7,
+      "totalAccounts": 9,
+      "custodians": [
+        {
+          "id": "c5a06098-8736-4238-983c-2b191ff7f5de",
+          "name": "Schwab",
+          "repId": "1005"
+        },
+        {
+          "id": "77326e8c-08d0-4960-8271-ea430693593e",
+          "name": "Fidelity",
+          "repId": "8993"
+        }
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440008",
+      "firstName": "James",
+      "lastName": "Anderson",
+      "totalAssets": 600000.00,
+      "totalClients": 8,
+      "totalAccounts": 10,
+      "custodians": [
+        {
+          "id": "77326e8c-08d0-4960-8271-ea430693593e",
+          "name": "Fidelity",
+          "repId": "8994"
+        }
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440009",
+      "firstName": "Laura",
+      "lastName": "Thomas",
+      "totalAssets": 800000.00,
+      "totalClients": 11,
+      "totalAccounts": 14,
+      "custodians": [
+        {
+          "id": "c5a06098-8736-4238-983c-2b191ff7f5de",
+          "name": "Schwab",
+          "repId": "1006"
+        }
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440010",
+      "firstName": "Daniel",
+      "lastName": "Martinez",
+      "totalAssets": 400000.00,
+      "totalClients": 6,
+      "totalAccounts": 8,
+      "custodians": [
+        {
+          "id": "c5a06098-8736-4238-983c-2b191ff7f5de",
+          "name": "Schwab",
+          "repId": "1007"
+        },
+        {
+          "id": "77326e8c-08d0-4960-8271-ea430693593e",
+          "name": "Fidelity",
+          "repId": "8995"
+        }
+      ]
+    }
+  ]
+}
