@@ -7,7 +7,19 @@
 
 
 struct Custodian: Codable, Equatable, Identifiable {
-    let id: String
-    let name: String
-    let repId: String?
+  let id: String
+  let name: String
+  let repId: String?
+  
+  init(id: String, name: String, repId: String? = nil) {
+    self.id = id
+    self.name = name
+    self.repId = repId
+  }
+  
+  init(from entity: CustodianEntity) {
+    id = entity.id ?? ""
+    name = entity.name ?? ""
+    repId = entity.repId
+  }
 }
