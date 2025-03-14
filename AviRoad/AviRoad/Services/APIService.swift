@@ -51,8 +51,12 @@ protocol APIClient {
 }
 
 class URLSessionAPIClient<EndpointType: APIEndpoint>: APIClient {
-  var isMocking: Bool {
-    return ProcessInfo.processInfo.environment["USE_MOCK_API"] == "1"
+  private var isMocking: Bool {
+#if MOCK_API
+    return true
+#else
+    return false
+#endif
   }
   
   func request<T: Decodable>(_ endpoint: EndpointType) -> AnyPublisher<T, Error> {
