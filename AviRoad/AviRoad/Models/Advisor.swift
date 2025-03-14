@@ -15,4 +15,5 @@ struct Advisor: Codable, Equatable, Identifiable {
   let totalClients: Int
   let totalAccounts: Int
   let custodians: [Custodian]
+  let accounts: [Account]?
 }

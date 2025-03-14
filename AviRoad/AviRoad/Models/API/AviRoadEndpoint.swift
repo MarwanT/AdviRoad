@@ -9,6 +9,7 @@ import Foundation
 
 enum AviRoadEndpoint: APIEndpoint {
   case dashboard
+  case advisor(id: String)
   
   var baseURL: URL {
     return URL(string: "https://api.aviroad.com/v1")!
@@ -16,6 +17,8 @@ enum AviRoadEndpoint: APIEndpoint {
   
   var path: String {
     switch self {
+    case .advisor(let id):
+      return "/advisors/\(id)"
     case .dashboard:
       return "/dashboard"
     }
@@ -23,7 +26,7 @@ enum AviRoadEndpoint: APIEndpoint {
   
   var method: HTTPMethod {
     switch self {
-    case .dashboard:
+    case .advisor, .dashboard:
       return .get
     }
   }
@@ -31,6 +34,8 @@ enum AviRoadEndpoint: APIEndpoint {
   var mockResponseData: Data? {
     var mockData: Data? = nil
     switch self {
+    case .advisor:
+      mockData = loadMockData(from: "advisor")
     case .dashboard:
       mockData = loadMockData(from: "dashboard")
     }
