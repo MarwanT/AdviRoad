@@ -47,11 +47,12 @@ enum HTTPMethod: String {
 
 protocol APIClient {
   associatedtype EndpointType: APIEndpoint
+  var isMocking: Bool { get }
   func request<T: Decodable>(_ endpoint: EndpointType) -> AnyPublisher<T, Error>
 }
 
 class URLSessionAPIClient<EndpointType: APIEndpoint>: APIClient {
-  private var isMocking: Bool {
+  var isMocking: Bool {
 #if MOCK_API
     return true
 #else
