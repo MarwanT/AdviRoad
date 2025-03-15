@@ -8,7 +8,7 @@
 import CoreData
 import Foundation
 
-struct Account: Codable, Equatable, Identifiable {
+struct Account: Codable, Identifiable {
   let id: String
   let name: String
   let number: String
@@ -37,6 +37,22 @@ struct Account: Codable, Equatable, Identifiable {
     self.holdings = entity.holdings?.map({ element in
       Holding(from: element as! HoldingEntity)
     }) ?? []
+  }
+}
+
+extension Account: Equatable {
+  static func == (lhs: Account, rhs: Account) -> Bool {
+    let equalProperties = lhs.id == rhs.id
+    && lhs.name == rhs.name
+    && lhs.number == rhs.number
+    && lhs.clientId == rhs.clientId
+    && lhs.advisorId == rhs.advisorId
+    && lhs.custodianId == rhs.custodianId
+    var holdingsAreEqual = lhs.holdings.count == rhs.holdings.count
+    lhs.holdings.forEach { lhsHolding in
+      holdingsAreEqual = holdingsAreEqual && rhs.holdings.contains(where: { lhsHolding == $0 })
+    }
+    return equalProperties && holdingsAreEqual
   }
 }
 
