@@ -5,6 +5,7 @@
 //  Created by Marwan Tutunji on 14/03/2025.
 //
 
+import CoreData
 import Foundation
 
 struct Account: Codable, Equatable, Identifiable {
@@ -36,5 +37,20 @@ struct Account: Codable, Equatable, Identifiable {
     self.holdings = entity.holdings?.map({ element in
       Holding(from: element as! HoldingEntity)
     }) ?? []
+  }
+}
+
+//==============================================================================
+
+extension AccountEntity {
+  convenience init(context: NSManagedObjectContext, structure: Account) {
+    self.init(context: context)
+    id = structure.id
+    name = structure.name
+    number = structure.number
+    clientId = structure.clientId
+    advisorId = structure.advisorId
+    custodianId = structure.custodianId
+    holdings = NSSet(array: structure.holdings.map({ HoldingEntity(context: context, structure: $0) }))
   }
 }

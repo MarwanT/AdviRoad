@@ -5,6 +5,7 @@
 //  Created by Marwan Tutunji on 14/03/2025.
 //
 
+import CoreData
 import Foundation
 
 struct Security: Codable, Equatable, Identifiable {
@@ -67,5 +68,18 @@ extension Security {
     try container.encode(name, forKey: .name)
     try container.encode(category, forKey: .category)
     try container.encode(dateAdded.ISO8601Format(), forKey: .dateAdded)
+  }
+}
+
+//==============================================================================
+
+extension SecurityEntity {
+  convenience init(context: NSManagedObjectContext, structure: Security) {
+    self.init(context: context)
+    id = structure.id
+    ticker = structure.ticker
+    name = structure.name
+    category = structure.category
+    dateAdded = structure.dateAdded
   }
 }

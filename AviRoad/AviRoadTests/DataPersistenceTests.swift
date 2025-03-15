@@ -213,4 +213,46 @@ struct DataPersistenceTests {
     let fetched = Security(from: result.first!)
     #expect(original == fetched)
   }
+  
+  // MARK: Transforming
+  //============================================================================
+  @Test("Creates advisors entities from advisor structures")
+  func createsAdvisorsEntitiesFromAdvisorStructures() {
+    // Given
+    let structures = mockManager.advisorsInstances(9)
+    
+    // When
+    let entities = structures.map { advisor in
+      AdvisorEntity(context: context, structure: advisor)
+    }
+    
+    // Then
+    let comparables = entities.map { entity in
+      Advisor(from: entity)
+    }
+    comparables.forEach { comparable in
+      let isContained = structures.contains(where: { $0 == comparable })
+      #expect(isContained == true)
+    }
+  }
+  
+  @Test("Creates securities entities from security structures")
+  func createSecurityEntitiesFromSecurityStructures() {
+    // Given
+    let structures = mockManager.securityInstance(9)
+    
+    // When
+    let entities = structures.map { security in
+      SecurityEntity(context: context, structure: security)
+    }
+    
+    // Then
+    let comparables = entities.map { entity in
+      Security(from: entity)
+    }
+    comparables.forEach { comparable in
+      let isContained = structures.contains(where: { $0 == comparable })
+      #expect(isContained == true)
+    }
+  }
 }

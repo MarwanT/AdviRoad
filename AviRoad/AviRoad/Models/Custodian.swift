@@ -5,6 +5,7 @@
 //  Created by Marwan Tutunji on 14/03/2025.
 //
 
+import CoreData
 
 struct Custodian: Codable, Equatable, Identifiable {
   let id: String
@@ -21,5 +22,16 @@ struct Custodian: Codable, Equatable, Identifiable {
     id = entity.id ?? ""
     name = entity.name ?? ""
     repId = entity.repId
+  }
+}
+
+//==============================================================================
+
+extension CustodianEntity {
+  convenience init(context: NSManagedObjectContext, structure: Custodian) {
+    self.init(context: context)
+    id = structure.id
+    name = structure.name
+    repId = structure.repId
   }
 }

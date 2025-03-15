@@ -128,4 +128,79 @@ struct MockManager {
       accounts: nil
     )
   }
+  
+  func advisorsInstances(_ numberOfInstances: Int) -> [Advisor] {
+    var instances: [Advisor] = []
+    for index in 0 ..< numberOfInstances {
+      let structure = Advisor(
+        id: UUID().uuidString.lowercased(),
+        firstName: "Mar\(index)",
+        lastName: "Tut\(index)",
+        totalAssets: 12345 + Double(index),
+        totalClients: index + 1,
+        totalAccounts: index + 2,
+        custodians: custodianInstances(index+1),
+        accounts: accountInstances(index+1))
+      instances.append(structure)
+    }
+    return instances
+  }
+  
+  func custodianInstances(_ numberOfInstances: Int) -> [Custodian] {
+    var instances: [Custodian] = []
+    for index in 0 ..< numberOfInstances {
+      let structure = Custodian(
+        id: UUID().uuidString.lowercased(),
+        name: "Custodian\(index)",
+        repId: "120\(index)"
+      )
+      instances.append(structure)
+    }
+    return instances
+  }
+  
+  func accountInstances(_ numberOfInstances: Int) -> [Account] {
+    var instances: [Account] = []
+    for index in 0 ..< numberOfInstances {
+      let structure = Account(
+        id: UUID().uuidString.lowercased(),
+        name: "Mar Wan \(index) 401k",
+        number: "12345\(index)",
+        clientId: UUID().uuidString.lowercased(),
+        advisorId: UUID().uuidString.lowercased(),
+        custodianId: UUID().uuidString.lowercased(),
+        holdings: holdingInstance(index + 1))
+      instances.append(structure)
+    }
+    return instances
+  }
+  
+  func holdingInstance(_ numberOfInstances: Int) -> [Holding] {
+    var instances: [Holding] = []
+    for index in 0 ..< numberOfInstances {
+      let structure = Holding(
+        id: UUID().uuidString.lowercased(),
+        ticker: "APPL\(index)",
+        units: index + 1,
+        unitPrice: Double(index) * 40)
+      instances.append(structure)
+    }
+    return instances
+  }
+  
+  func securityInstance(_ numberOfInstances: Int) -> [Security] {
+    var instances: [Security] = []
+    for index in 0 ..< numberOfInstances {
+      let structure = Security(
+        id: UUID().uuidString.lowercased(),
+        ticker: "APPL\(index)",
+        name: "Awsome Security",
+        category: "mutual-fund",
+        dateAdded: Date()
+      )
+      instances.append(structure)
+    }
+    return instances
+  }
 }
+  

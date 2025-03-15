@@ -5,6 +5,7 @@
 //  Created by Marwan Tutunji on 14/03/2025.
 //
 
+import CoreData
 import Foundation
 
 struct Holding: Codable, Equatable, Identifiable {
@@ -25,5 +26,17 @@ struct Holding: Codable, Equatable, Identifiable {
     self.ticker = entity.ticker ?? ""
     self.units = Int(entity.units)
     self.unitPrice = Double(entity.unitPrice)
+  }
+}
+
+//==============================================================================
+
+extension HoldingEntity {
+  convenience init(context: NSManagedObjectContext, structure: Holding) {
+    self.init(context: context)
+    id = structure.id
+    ticker = structure.ticker
+    units = Int16(structure.units)
+    unitPrice = structure.unitPrice
   }
 }

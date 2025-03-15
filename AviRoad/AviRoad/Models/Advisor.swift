@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 struct Advisor: Codable, Equatable, Identifiable {
   let id: String
@@ -41,5 +42,22 @@ struct Advisor: Codable, Equatable, Identifiable {
     accounts = entity.accounts?.map { entity in
       Account(from: entity as! AccountEntity)
     } ?? []
+  }
+}
+
+//==============================================================================
+
+extension AdvisorEntity {
+  convenience init(context: NSManagedObjectContext, structure: Advisor) {
+    self.init(context: context)
+    id = structure.id
+    firstName = structure.firstName
+    lastName = structure.lastName
+    totalAssets = structure.totalAssets
+    totalClients = Int16(structure.totalClients)
+    totalAccounts = Int16(structure.totalAccounts)
+    custodians = NSSet(array: structure.custodians.map({ CustodianEntity(context: context, structure: $0) }))
+    let accountEntities = structure.accounts?.map({ AccountEntity(context: context, structure: $0) })
+    accounts = accountEntities != nil ? NSSet(array: accountEntities!) : nil
   }
 }
