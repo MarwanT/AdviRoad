@@ -11,6 +11,7 @@ import Testing
 @testable import AviRoad
 
 struct AviRoadEndpointTests {
+  let mockManager: MockManager = MockManager()
   let sut = URLSessionAPIClient<AviRoadEndpoint>()
   var cancellables: Set<AnyCancellable> = []
   
@@ -22,7 +23,7 @@ struct AviRoadEndpointTests {
     let result: DashboardResponse = try await sut.request(api).async()
     // Then
     #expect(result.advisors.count == 10)
-    let expectedFirstAdvisor = MockManager.firstMockAdvisor
+    let expectedFirstAdvisor = mockManager.firstMockAdvisor
     #expect(expectedFirstAdvisor == result.advisors.first)
   }
   

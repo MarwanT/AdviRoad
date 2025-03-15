@@ -35,9 +35,11 @@ struct Advisor: Codable, Equatable, Identifiable {
     totalAssets = Double(entity.totalAssets)
     totalClients = Int(entity.totalClients)
     totalAccounts = Int(entity.totalAccounts)
-    custodians = (entity.custodians?.allObjects as? [CustodianEntity])?.map({ entity in
-      Custodian(from: entity)
-    }) ?? []
-    accounts = nil
+    custodians = entity.custodians?.map { entity in
+      Custodian(from: entity as! CustodianEntity)
+    } ?? []
+    accounts = entity.accounts?.map { entity in
+      Account(from: entity as! AccountEntity)
+    } ?? []
   }
 }
