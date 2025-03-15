@@ -19,6 +19,7 @@ enum DataPersistenceError: Error {
 }
 
 protocol DataPersistence {
+  var context: NSManagedObjectContext { get }
   func add(item: some Persistable) -> AnyPublisher<Void, DataPersistenceError>
   func remove(item: some Persistable) -> AnyPublisher<Void, DataPersistenceError>
   func update(item: some Persistable) -> AnyPublisher<Void, DataPersistenceError>
@@ -34,6 +35,10 @@ class CoreDataPersistence: DataPersistence {
   
   init(container: NSPersistentContainer) {
     self.container = container
+  }
+  
+  var context: NSManagedObjectContext {
+    return container.viewContext
   }
   
   func add(item: some Persistable) -> AnyPublisher<Void, DataPersistenceError> {
