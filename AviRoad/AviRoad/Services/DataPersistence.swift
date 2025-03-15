@@ -29,11 +29,23 @@ protocol DataPersistence {
   func fetch<T: Persistable>(_ type: T.Type, predicate: Predicate?, sortBy: [Sorting]) -> AnyPublisher<[T], DataPersistenceError>
 }
 
+private var persistentContainer: NSPersistentContainer {
+  let container = NSPersistentContainer(name: "ModelScheme")
+  let description = NSPersistentStoreDescription()
+  container.persistentStoreDescriptions = [description]
+  container.loadPersistentStores { _, error in
+    if let error = error {
+      fatalError("Failed to load store: \(error)")
+    }
+  }
+  return container
+}
+
 class CoreDataPersistence: DataPersistence {
   private let container: NSPersistentContainer
   private var cancellables = Set<AnyCancellable>()
   
-  init(container: NSPersistentContainer) {
+  init(container: NSPersistentContainer = persistentContainer) {
     self.container = container
   }
   
