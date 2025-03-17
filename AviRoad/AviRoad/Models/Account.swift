@@ -70,3 +70,15 @@ extension AccountEntity {
     holdings = NSSet(array: structure.holdings.map({ HoldingEntity(context: context, structure: $0) }))
   }
 }
+
+extension AccountEntity: Updatable {
+  func update(entity: AccountEntity) {
+    id = entity.id
+    name = entity.name
+    number = entity.number
+    clientId = entity.clientId
+    advisorId = entity.advisorId
+    custodianId = entity.custodianId
+    holdings = entity.holdings
+  }
+}

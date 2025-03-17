@@ -35,3 +35,11 @@ extension CustodianEntity {
     repId = structure.repId
   }
 }
+
+extension CustodianEntity: Updatable {
+  func update(entity: CustodianEntity) {
+    entity.id = id
+    entity.name = name
+    entity.repId = repId
+  }
+}

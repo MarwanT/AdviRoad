@@ -9,20 +9,25 @@ import Combine
 import CoreData
 import Foundation
 
-typealias Persistable = NSManagedObject
+protocol Updatable {
+  func update(entity: Self)
+}
+
+typealias Persistable = NSManagedObject & Updatable & Identifiable<String?>
 typealias Sorting = NSSortDescriptor
 typealias Predicate = NSPredicate
 
 enum DataPersistenceError: Error {
   case taskFailed(Error)
+  case notFound
   case deallocated
 }
 
 protocol DataPersistence {
   var context: NSManagedObjectContext { get }
-  func add(item: some Persistable) -> AnyPublisher<Void, DataPersistenceError>
-  func remove(item: some Persistable) -> AnyPublisher<Void, DataPersistenceError>
-  func update(item: some Persistable) -> AnyPublisher<Void, DataPersistenceError>
+  func add<T: Persistable>(item: T) -> AnyPublisher<Void, DataPersistenceError>
+  func remove<T: Persistable>(item: T) -> AnyPublisher<Void, DataPersistenceError>
+  func update<T: Persistable>(item: T) -> AnyPublisher<Void, DataPersistenceError>
   func fetchAll<T: Persistable>(_ type: T.Type) -> AnyPublisher<[T], DataPersistenceError>
   func fetchAll<T: Persistable>(_ type: T.Type, sortBy: [Sorting]) -> AnyPublisher<[T], DataPersistenceError>
   func fetch<T: Persistable>(_ type: T.Type, predicate: Predicate?) -> AnyPublisher<[T], DataPersistenceError>
@@ -50,10 +55,11 @@ class CoreDataPersistence: DataPersistence {
   }
   
   var context: NSManagedObjectContext {
+    container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
     return container.viewContext
   }
   
-  func add(item: some Persistable) -> AnyPublisher<Void, DataPersistenceError> {
+  func add<T: Persistable>(item: T) -> AnyPublisher<Void, DataPersistenceError> {
     return Deferred {
       Future { [weak self] promise in
         guard let self = self else {
@@ -63,9 +69,27 @@ class CoreDataPersistence: DataPersistence {
         let context = self.container.viewContext
         context.perform {
           do {
-            context.insert(item)
-            try context.save()
-            promise(.success(()))
+            // Check if the item already exists
+            let fetchRequest = NSFetchRequest<T>(entityName: String(describing: T.self))
+            fetchRequest.predicate = NSPredicate(format: "id == %@", item.id ?? "")
+            let count = try context.count(for: fetchRequest)
+            if count > 0 {
+              // Item exists, delegate to update method
+              self.update(item: item)
+                .sink(receiveCompletion: { completion in
+                  if case .failure(let error) = completion {
+                    promise(.failure(error))
+                  }
+                }, receiveValue: {
+                  promise(.success(()))
+                })
+                .store(in: &self.cancellables)
+            } else {
+              // Item doesn't exist, proceed to add
+              context.insert(item)
+              try context.save()
+              promise(.success(()))
+            }
           } catch {
             promise(.failure(.taskFailed(error)))
           }
@@ -74,7 +98,7 @@ class CoreDataPersistence: DataPersistence {
     }.eraseToAnyPublisher()
   }
   
-  func remove(item: some Persistable) -> AnyPublisher<Void, DataPersistenceError> {
+  func remove<T: Persistable>(item: T) -> AnyPublisher<Void, DataPersistenceError> {
     return Deferred {
       Future { promise in
         let context = self.container.viewContext
@@ -91,13 +115,32 @@ class CoreDataPersistence: DataPersistence {
     }.eraseToAnyPublisher()
   }
   
-  func update(item: some Persistable) -> AnyPublisher<Void, DataPersistenceError> {
+  func update<T: Persistable>(item: T) -> AnyPublisher<Void, DataPersistenceError> {
     return Future { promise in
       let context = self.container.viewContext
       context.perform {
         do {
-          try context.save()
-          promise(.success(()))
+          // Fetch the existing object from the context
+          let fetchRequest = NSFetchRequest<T>(entityName: String(describing: T.self))
+          fetchRequest.predicate = NSPredicate(format: "id == %@", item.id ?? "")
+          let results = try context.fetch(fetchRequest)
+          
+          if let objectToUpdate = results.first {
+            objectToUpdate.update(entity: item)
+            try context.save()
+            promise(.success(()))
+          } else {
+            // Item doesn't exist, delegate to add method
+            self.add(item: item)
+              .sink(receiveCompletion: { completion in
+                if case .failure(let error) = completion {
+                  promise(.failure(error))
+                }
+              }, receiveValue: {
+                promise(.success(()))
+              })
+              .store(in: &self.cancellables)
+          }
         } catch {
           promise(.failure(.taskFailed(error)))
         }

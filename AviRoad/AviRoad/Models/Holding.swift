@@ -40,3 +40,12 @@ extension HoldingEntity {
     unitPrice = structure.unitPrice
   }
 }
+
+extension HoldingEntity: Updatable {
+  func update(entity: HoldingEntity) {
+    id = entity.id
+    ticker = entity.ticker
+    units = entity.units
+    unitPrice = entity.unitPrice
+  }
+}

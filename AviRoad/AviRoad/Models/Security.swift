@@ -73,7 +73,7 @@ extension Security {
 
 //==============================================================================
 
-extension SecurityEntity {
+extension SecurityEntity {  
   convenience init(context: NSManagedObjectContext, structure: Security) {
     self.init(context: context)
     id = structure.id
@@ -81,5 +81,15 @@ extension SecurityEntity {
     name = structure.name
     category = structure.category
     dateAdded = structure.dateAdded
+  }
+}
+
+extension SecurityEntity: Updatable {
+  func update(entity: SecurityEntity) {
+    id = entity.id
+    ticker = entity.ticker
+    name = entity.name
+    category = entity.category
+    dateAdded = entity.dateAdded
   }
 }

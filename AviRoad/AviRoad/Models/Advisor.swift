@@ -82,3 +82,16 @@ extension AdvisorEntity {
     accounts = accountEntities != nil ? NSSet(array: accountEntities!) : nil
   }
 }
+
+extension AdvisorEntity: Updatable {
+  func update(entity: AdvisorEntity) {
+    id = entity.id
+    firstName = entity.firstName
+    lastName = entity.lastName
+    totalAssets = entity.totalAssets
+    totalClients = entity.totalClients
+    totalAccounts = entity.totalAccounts
+    custodians = entity.custodians
+    accounts = entity.accounts
+  }
+}
