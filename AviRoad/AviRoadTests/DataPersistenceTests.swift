@@ -25,6 +25,7 @@ final class DataPersistenceTests {
   }
   
   var context: NSManagedObjectContext {
+    container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
     return container.viewContext
   }
   
@@ -33,7 +34,7 @@ final class DataPersistenceTests {
   @Test("Persists an Advisor entity without accounts")
   func persistsAnAdvisorEntityWithoutAccounts() async throws {
     // Given
-    let entities = mockManager.advisorEntityInstances(context, 10, withAccounts: false)
+    let entities = mockManager.advisorEntityInstances(context, 1, withAccounts: false)
     let structures = entities.map({ Advisor(from: $0) })
     
     // When
@@ -44,7 +45,27 @@ final class DataPersistenceTests {
     // Then
     let fetchRequest: NSFetchRequest<AdvisorEntity> = AdvisorEntity.fetchRequest()
     let results = try context.fetch(fetchRequest)
-    #expect(results.count == 10)
+    #expect(results.count == 1)
+    results.forEach { entity in
+      #expect(structures.contains(where: { $0 == Advisor(from: entity) }))
+    }
+  }
+  
+  @Test("Persists multiple Advisor entities without accounts")
+  func persistsMultipleAdvisorEntityWithoutAccounts() async throws {
+    // Given
+    let entities = mockManager.advisorEntityInstances(context, 18, withAccounts: false)
+    let structures = entities.map({ Advisor(from: $0) })
+    
+    // When
+    for entity in entities {
+      try await sut.add(item: entity).async()
+    }
+    
+    // Then
+    let fetchRequest: NSFetchRequest<AdvisorEntity> = AdvisorEntity.fetchRequest()
+    let results = try context.fetch(fetchRequest)
+    #expect(results.count == 18)
     results.forEach { entity in
       #expect(structures.contains(where: { $0 == Advisor(from: entity) }))
     }
@@ -70,7 +91,24 @@ final class DataPersistenceTests {
     }
   }
   
-  @Test("Persists a Security Entity")
+  @Test("Adding an entity with the same id update the existing one")
+  func updateExistingEntityWhenAddingAnotherTime() async throws {
+    // Given
+    let entity = mockManager.advisorEntityInstances(context, 1, withAccounts: false).first!
+    let structure = Advisor(from: entity)
+    try context.save()
+    
+    // When
+    let similarEntity = AdvisorEntity(context: context, structure: structure)
+    try await sut.add(item: similarEntity).async()
+    
+    // Then
+    let fetchRequest: NSFetchRequest<AdvisorEntity> = AdvisorEntity.fetchRequest()
+    let results = try context.fetch(fetchRequest)
+    #expect(results.count == 1)
+  }
+  
+  @Test("Persists Security Entities")
   func persistASecurityEntity() async throws {
     // Given
     let entities = mockManager.securityEntityInstances(context)
@@ -91,13 +129,135 @@ final class DataPersistenceTests {
     }
   }
   
+  // MARK: Updating
+  //============================================================================
+  @Test("Update a non existing advisor adds it")
+  func updateANonExistingAdvisor() async throws {
+    // Given
+    let entities = mockManager.advisorEntityInstances(context, 1, withAccounts: true)
+    let structure = Advisor(from: entities.first!)
+    
+    // When
+    for entity in entities {
+      try await sut.update(item: entity).async()
+    }
+    
+    // Then
+    let fetchRequest: NSFetchRequest<AdvisorEntity> = AdvisorEntity.fetchRequest()
+    let results = try context.fetch(fetchRequest)
+    #expect(results.count == 1)
+    #expect(Advisor(from: results.first!) == structure)
+  }
+  
+  @Test("Update multiple non existing advisors adds them")
+  func updateMultipleNonExistingAdvisors() async throws {
+    // Given
+    let entities = mockManager.advisorEntityInstances(context, 9, withAccounts: true)
+    let structures = entities.map({ Advisor(from: $0) })
+    
+    // When
+    for entity in entities {
+      try await sut.update(item: entity).async()
+    }
+    
+    // Then
+    let fetchRequest: NSFetchRequest<AdvisorEntity> = AdvisorEntity.fetchRequest()
+    let results = try context.fetch(fetchRequest)
+    #expect(results.count == 9)
+    results.forEach { entity in
+      let fetched = Advisor(from: entity)
+      #expect(structures.contains(where: { $0 == fetched }) == true)
+    }
+  }
+  
+  @Test("Updating an advisor persists the new changes")
+  func updateAnExistingAdvisor() async throws {
+    // Given
+    let entities = mockManager.advisorEntityInstances(context, 1, withAccounts: false)
+    let targettedStructure = Advisor(from: entities[0])
+    try context.save()
+    let fetchRequest: NSFetchRequest<AdvisorEntity> = AdvisorEntity.fetchRequest()
+    var results = try context.fetch(fetchRequest)
+    #expect(results.count == 1)
+    #expect(Advisor(from: results[0]) == Advisor(from: entities[0]))
+    #expect(results[0].accounts?.count == 0)
+    
+    // When
+    let accounts = mockManager.accountInstances(4)
+    let newStructure = Advisor(
+      id: targettedStructure.id,
+      firstName: targettedStructure.firstName,
+      lastName: targettedStructure.lastName,
+      totalAssets: targettedStructure.totalAssets,
+      totalClients: targettedStructure.totalClients,
+      totalAccounts: accounts.count,
+      custodians: targettedStructure.custodians,
+      accounts: accounts)
+    let _ = AdvisorEntity(context: context, structure: newStructure)
+    try context.save()
+    // Then
+    results = try context.fetch(fetchRequest)
+    #expect(results.count == 1)
+    let resultStructure = Advisor(from:results[0])
+    #expect(resultStructure.accounts?.count == accounts.count)
+    #expect(resultStructure == newStructure)
+  }
+  
+  @Test("Update multiple non existing securities adds them")
+  func updateMultipleNonExistingSecurities() async throws {
+    // Given
+    let entities = mockManager.securityEntityInstances(context)
+    let structures = entities.map({ Security(from: $0) })
+    
+    // When
+    for entity in entities {
+      try await sut.update(item: entity).async()
+    }
+    
+    // Then
+    let fetchRequest: NSFetchRequest<SecurityEntity> = SecurityEntity.fetchRequest()
+    let results = try context.fetch(fetchRequest)
+    #expect(results.count == 2)
+    results.forEach { entity in
+      let fetched = Security(from: entity)
+      #expect(structures.contains(where: { $0 == fetched }) == true)
+    }
+  }
+  
+  @Test("Updating a security persists the new changes")
+  func updateAnExistingStructure() async throws {
+    // Given
+    let entities = mockManager.securityEntityInstances(context)
+    let targettedStructure = Security(from: entities[0])
+    try context.save()
+    let fetchRequest: NSFetchRequest<SecurityEntity> = SecurityEntity.fetchRequest()
+    var results = try context.fetch(fetchRequest)
+    #expect(results.count == 2)
+    
+    // When
+    let newStructure = Security(
+      id: targettedStructure.id,
+      ticker: "SMSUG",
+      name: "Samsung",
+      category: targettedStructure.category,
+      dateAdded: targettedStructure.dateAdded
+    )
+    let _ = SecurityEntity(context: context, structure: newStructure)
+    try context.save()
+    // Then
+    fetchRequest.predicate = Predicate(format: "id == %@", newStructure.id)
+    results = try context.fetch(fetchRequest)
+    #expect(results.count == 1)
+    let resultStructure = Security(from:results[0])
+    #expect(resultStructure == newStructure)
+  }
+  
   // MARK: Removing
   //============================================================================
   @Test("Removes an advisor successfully")
   func removeAnAdvisorEntity() async throws {
     // Given
     let entity = mockManager.advisorEntityInstances(context, 1, withAccounts: true).first!
-    context.insert(entity)
     try context.save()
     let fetchRequest: NSFetchRequest<AdvisorEntity> = AdvisorEntity.fetchRequest()
     var advisorsResults = (try context.fetch(fetchRequest))
@@ -121,11 +281,8 @@ final class DataPersistenceTests {
   func removeASecurityEntity() async throws {
     // Given
     let entities = mockManager.securityEntityInstances(context)
-    let targettedEntity = entities.first!
-    for entity in entities {
-      context.insert(entity)
-    }
     try context.save()
+    let targettedEntity = entities.first!
     let fetchRequest: NSFetchRequest<SecurityEntity> = SecurityEntity.fetchRequest()
     var results = (try context.fetch(fetchRequest))
     #expect(results.count == 2)
@@ -144,10 +301,7 @@ final class DataPersistenceTests {
   @Test("Fetches all advisor entities")
   func fetchAllClientEntities() async throws {
     // Given
-    let entities = mockManager.advisorEntityInstances(context, 5, withAccounts: true)
-    entities.forEach { entity in
-      context.insert(entity)
-    }
+    let _ = mockManager.advisorEntityInstances(context, 5, withAccounts: true)
     try context.save()
     
     // When
@@ -161,11 +315,8 @@ final class DataPersistenceTests {
   func fetchASpecificAdvisorEntity() async throws {
     // Given
     let entities = mockManager.advisorEntityInstances(context, 5, withAccounts: true)
-    entities.forEach { entity in
-      context.insert(entity)
-    }
-    let targettedEntity = entities[1]
     try context.save()
+    let targettedEntity = entities[1]
     
     // When
     let result = try await sut.fetch(
@@ -183,10 +334,7 @@ final class DataPersistenceTests {
   @Test("Fetches all security entities")
   func fetchAllSecurityEntities() async throws {
     // Given
-    let entities = mockManager.securityEntityInstances(context)
-    entities.forEach { entity in
-      context.insert(entity)
-    }
+    let _ = mockManager.securityEntityInstances(context)
     try context.save()
     
     // When
@@ -200,9 +348,6 @@ final class DataPersistenceTests {
   func fetchASpecificSecurityEntity() async throws {
     // Given
     let entities = mockManager.securityEntityInstances(context)
-    entities.forEach { entity in
-      context.insert(entity)
-    }
     let targettedEntity = entities[1]
     try context.save()
     
@@ -228,7 +373,9 @@ final class DataPersistenceTests {
     
     // When
     let entities = structures.map { advisor in
-      AdvisorEntity(context: context, structure: advisor)
+      context.performAndWait {
+        AdvisorEntity(context: context, structure: advisor)
+      }
     }
     
     // Then
@@ -248,7 +395,9 @@ final class DataPersistenceTests {
     
     // When
     let entities = structures.map { security in
-      SecurityEntity(context: context, structure: security)
+      context.performAndWait {
+        SecurityEntity(context: context, structure: security)
+      }
     }
     
     // Then

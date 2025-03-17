@@ -115,12 +115,12 @@ struct MockManager {
       let shwabEntity = CustodianEntity(context: context)
       shwabEntity.id = "c5a06098-8736-4238-983c-2b191ff7f5de"
       shwabEntity.name = "Schwab"
-      shwabEntity.repId = "1001"
+      shwabEntity.repId = UUID().uuidString.lowercased()
       instances.append(shwabEntity)
       let fidelityEntity = CustodianEntity(context: context)
       fidelityEntity.id = "77326e8c-08d0-4960-8271-ea430693593e"
       fidelityEntity.name = "Fidelity"
-      fidelityEntity.repId = "8989"
+      fidelityEntity.repId = UUID().uuidString.lowercased()
       instances.append(fidelityEntity)
     }
     return instances
