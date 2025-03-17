@@ -9,7 +9,8 @@ import CoreData
 import Testing
 @testable import AviRoad
 
-struct DataPersistenceTests {
+@Suite(.serialized)
+final class DataPersistenceTests {
   let mockManager: MockManager = MockManager()
   let container: NSPersistentContainer
   let sut: DataPersistence
@@ -17,6 +18,10 @@ struct DataPersistenceTests {
   init () {
     container = mockManager.persistentContainer
     sut = CoreDataPersistence(container: container)
+  }
+  
+  deinit {
+    mockManager.deletePersistentStore()
   }
   
   var context: NSManagedObjectContext {

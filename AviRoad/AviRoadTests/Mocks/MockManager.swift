@@ -12,7 +12,7 @@ struct MockManager {
   var persistentContainer: NSPersistentContainer {
     let container = NSPersistentContainer(name: "ModelScheme")
     let description = NSPersistentStoreDescription()
-    description.type = NSInMemoryStoreType
+//    description.type = NSInMemoryStoreType
     container.persistentStoreDescriptions = [description]
     container.loadPersistentStores { _, error in
       if let error = error {
@@ -20,6 +20,19 @@ struct MockManager {
       }
     }
     return container
+  }
+  
+  func deletePersistentStore() {
+    let persistentStoreCoordinator = persistentContainer.persistentStoreCoordinator
+    for store in persistentStoreCoordinator.persistentStores {
+      guard let storeURL = store.url else { continue }
+      do {
+        try persistentStoreCoordinator.remove(store)
+        try FileManager.default.removeItem(at: storeURL)
+      } catch {
+        print("Failed to delete persistent store: \(error)")
+      }
+    }
   }
   
   func advisorEntityInstances(_ context: NSManagedObjectContext, _ numberOfInstances: Int, withAccounts: Bool) -> [AdvisorEntity] {
