@@ -1,0 +1,580 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		9CF51C342D81FCDC00CA668E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9CF51C192D81FCDA00CA668E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9CF51C202D81FCDA00CA668E;
+			remoteInfo = AviRoad;
+		};
+		9CF51C3E2D81FCDC00CA668E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9CF51C192D81FCDA00CA668E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9CF51C202D81FCDA00CA668E;
+			remoteInfo = AviRoad;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9CF51C212D81FCDA00CA668E /* AviRoad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AviRoad.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CF51C332D81FCDC00CA668E /* AviRoadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AviRoadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CF51C3D2D81FCDC00CA668E /* AviRoadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AviRoadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		9C2489282D845E08001A9CE6 /* Exceptions for "AviRoadTests" folder in "AviRoad" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Mocks/JSON/advisor.json,
+				Mocks/JSON/dashboard.json,
+			);
+			target = 9CF51C202D81FCDA00CA668E /* AviRoad */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		9CF51C232D81FCDA00CA668E /* AviRoad */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = AviRoad;
+			sourceTree = "<group>";
+		};
+		9CF51C362D81FCDC00CA668E /* AviRoadTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				9C2489282D845E08001A9CE6 /* Exceptions for "AviRoadTests" folder in "AviRoad" target */,
+			);
+			path = AviRoadTests;
+			sourceTree = "<group>";
+		};
+		9CF51C402D81FCDC00CA668E /* AviRoadUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = AviRoadUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9CF51C1E2D81FCDA00CA668E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CF51C302D81FCDC00CA668E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CF51C3A2D81FCDC00CA668E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9CF51C182D81FCDA00CA668E = {
+			isa = PBXGroup;
+			children = (
+				9CF51C232D81FCDA00CA668E /* AviRoad */,
+				9CF51C362D81FCDC00CA668E /* AviRoadTests */,
+				9CF51C402D81FCDC00CA668E /* AviRoadUITests */,
+				9CF51C222D81FCDA00CA668E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9CF51C222D81FCDA00CA668E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9CF51C212D81FCDA00CA668E /* AviRoad.app */,
+				9CF51C332D81FCDC00CA668E /* AviRoadTests.xctest */,
+				9CF51C3D2D81FCDC00CA668E /* AviRoadUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9CF51C202D81FCDA00CA668E /* AviRoad */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9CF51C472D81FCDC00CA668E /* Build configuration list for PBXNativeTarget "AviRoad" */;
+			buildPhases = (
+				9CF51C1D2D81FCDA00CA668E /* Sources */,
+				9CF51C1E2D81FCDA00CA668E /* Frameworks */,
+				9CF51C1F2D81FCDA00CA668E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				9CF51C232D81FCDA00CA668E /* AviRoad */,
+			);
+			name = AviRoad;
+			packageProductDependencies = (
+			);
+			productName = AviRoad;
+			productReference = 9CF51C212D81FCDA00CA668E /* AviRoad.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9CF51C322D81FCDC00CA668E /* AviRoadTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9CF51C4A2D81FCDC00CA668E /* Build configuration list for PBXNativeTarget "AviRoadTests" */;
+			buildPhases = (
+				9CF51C2F2D81FCDC00CA668E /* Sources */,
+				9CF51C302D81FCDC00CA668E /* Frameworks */,
+				9CF51C312D81FCDC00CA668E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9CF51C352D81FCDC00CA668E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				9CF51C362D81FCDC00CA668E /* AviRoadTests */,
+			);
+			name = AviRoadTests;
+			packageProductDependencies = (
+			);
+			productName = AviRoadTests;
+			productReference = 9CF51C332D81FCDC00CA668E /* AviRoadTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9CF51C3C2D81FCDC00CA668E /* AviRoadUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9CF51C4D2D81FCDC00CA668E /* Build configuration list for PBXNativeTarget "AviRoadUITests" */;
+			buildPhases = (
+				9CF51C392D81FCDC00CA668E /* Sources */,
+				9CF51C3A2D81FCDC00CA668E /* Frameworks */,
+				9CF51C3B2D81FCDC00CA668E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9CF51C3F2D81FCDC00CA668E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				9CF51C402D81FCDC00CA668E /* AviRoadUITests */,
+			);
+			name = AviRoadUITests;
+			packageProductDependencies = (
+			);
+			productName = AviRoadUITests;
+			productReference = 9CF51C3D2D81FCDC00CA668E /* AviRoadUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9CF51C192D81FCDA00CA668E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					9CF51C202D81FCDA00CA668E = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					9CF51C322D81FCDC00CA668E = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 9CF51C202D81FCDA00CA668E;
+					};
+					9CF51C3C2D81FCDC00CA668E = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 9CF51C202D81FCDA00CA668E;
+					};
+				};
+			};
+			buildConfigurationList = 9CF51C1C2D81FCDA00CA668E /* Build configuration list for PBXProject "AviRoad" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9CF51C182D81FCDA00CA668E;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 9CF51C222D81FCDA00CA668E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9CF51C202D81FCDA00CA668E /* AviRoad */,
+				9CF51C322D81FCDC00CA668E /* AviRoadTests */,
+				9CF51C3C2D81FCDC00CA668E /* AviRoadUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9CF51C1F2D81FCDA00CA668E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CF51C312D81FCDC00CA668E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CF51C3B2D81FCDC00CA668E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9CF51C1D2D81FCDA00CA668E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CF51C2F2D81FCDC00CA668E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CF51C392D81FCDC00CA668E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9CF51C352D81FCDC00CA668E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9CF51C202D81FCDA00CA668E /* AviRoad */;
+			targetProxy = 9CF51C342D81FCDC00CA668E /* PBXContainerItemProxy */;
+		};
+		9CF51C3F2D81FCDC00CA668E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9CF51C202D81FCDA00CA668E /* AviRoad */;
+			targetProxy = 9CF51C3E2D81FCDC00CA668E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		9CF51C452D81FCDC00CA668E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9CF51C462D81FCDC00CA668E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9CF51C482D81FCDC00CA668E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"AviRoad/Preview Content\"";
+				DEVELOPMENT_TEAM = 3CQ52Q5QPQ;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "";
+				"OTHER_SWIFT_FLAGS[arch=*]" = "-DMOCK_API";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tutunji.marwan.AviRoad;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9CF51C492D81FCDC00CA668E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"AviRoad/Preview Content\"";
+				DEVELOPMENT_TEAM = 3CQ52Q5QPQ;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tutunji.marwan.AviRoad;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		9CF51C4B2D81FCDC00CA668E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3CQ52Q5QPQ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tutunji.marwan.AviRoadTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AviRoad.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AviRoad";
+			};
+			name = Debug;
+		};
+		9CF51C4C2D81FCDC00CA668E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3CQ52Q5QPQ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tutunji.marwan.AviRoadTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AviRoad.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AviRoad";
+			};
+			name = Release;
+		};
+		9CF51C4E2D81FCDC00CA668E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3CQ52Q5QPQ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tutunji.marwan.AviRoadUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AviRoad;
+			};
+			name = Debug;
+		};
+		9CF51C4F2D81FCDC00CA668E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3CQ52Q5QPQ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tutunji.marwan.AviRoadUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AviRoad;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9CF51C1C2D81FCDA00CA668E /* Build configuration list for PBXProject "AviRoad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9CF51C452D81FCDC00CA668E /* Debug */,
+				9CF51C462D81FCDC00CA668E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9CF51C472D81FCDC00CA668E /* Build configuration list for PBXNativeTarget "AviRoad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9CF51C482D81FCDC00CA668E /* Debug */,
+				9CF51C492D81FCDC00CA668E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9CF51C4A2D81FCDC00CA668E /* Build configuration list for PBXNativeTarget "AviRoadTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9CF51C4B2D81FCDC00CA668E /* Debug */,
+				9CF51C4C2D81FCDC00CA668E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9CF51C4D2D81FCDC00CA668E /* Build configuration list for PBXNativeTarget "AviRoadUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9CF51C4E2D81FCDC00CA668E /* Debug */,
+				9CF51C4F2D81FCDC00CA668E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9CF51C192D81FCDA00CA668E /* Project object */;
+}

@@ -1,0 +1,239 @@
+{
+  "advisor": {
+    "id": "550e8400-e29b-41d4-a716-446655440007",
+    "firstName": "Sarah",
+    "lastName": "Taylor",
+    "totalAssets": 167872.51,
+    "totalClients": 7,
+    "totalAccounts": 9,
+    "custodians": [
+      {
+        "id": "c5a06098-8736-4238-983c-2b191ff7f5de",
+        "name": "Schwab",
+        "repId": "1005"
+      },
+      {
+        "id": "77326e8c-08d0-4960-8271-ea430693593e",
+        "name": "Fidelity",
+        "repId": "8993"
+      }
+    ],
+    "accounts": [
+      {
+        "id": "cf2124b9-0f63-4475-9b90-59a4aa85f2b6",
+        "name": "Bradley Green - 401k",
+        "number": "21889645",
+        "clientId": "9c4f9877-8ea7-4744-b250-966cec798ccd",
+        "advisorId": "550e8400-e29b-41d4-a716-446655440007",
+        "custodianId": "c5a06098-8736-4238-983c-2b191ff7f5de",
+        "holdings": [
+          {
+            "id": "a1b2c3d4-e5f6-4a5b-8c7d-9e0f1a2b3c4d",
+            "ticker": "ICKAX",
+            "units": 77,
+            "unitPrice": 398.63
+          }
+        ]
+      },
+      {
+        "id": "687b56e1-8751-4470-8a81-7f6ff020cffe",
+        "name": "Amer Takouti - 401k",
+        "number": "21889646",
+        "clientId": "1161a82f-86d9-4fff-bcfe-f7f34df8b649",
+        "advisorId": "550e8400-e29b-41d4-a716-446655440007",
+        "custodianId": "77326e8c-08d0-4960-8271-ea430693593e",
+        "holdings": [
+          {
+            "id": "b2c3d4e5-f6a7-4b5c-8d9e-0f1a2b3c4d5e",
+            "ticker": "HEMCX",
+            "units": 50,
+            "unitPrice": 270.30
+          }
+        ]
+      },
+      {
+        "id": "bdf98456-3d90-4238-8447-5318c3fcb15f",
+        "name": "Amer Takouti - Roth IRA",
+        "number": "34576218",
+        "clientId": "1161a82f-86d9-4fff-bcfe-f7f34df8b649",
+        "advisorId": "550e8400-e29b-41d4-a716-446655440007",
+        "custodianId": "c5a06098-8736-4238-983c-2b191ff7f5de",
+        "holdings": [
+          {
+            "id": "c3d4e5f6-a7b8-4c5d-9e0f-1a2b3c4d5e6f",
+            "ticker": "VOO",
+            "units": 30,
+            "unitPrice": 450.00
+          }
+        ]
+      },
+      {
+        "id": "91402ebc-2f42-4c79-9dcd-1f2de667258a",
+        "name": "Michael Carter - Traditional IRA",
+        "number": "98745261",
+        "clientId": "e1d3c287-20f2-476c-a31f-88d2c2c1c918",
+        "advisorId": "550e8400-e29b-41d4-a716-446655440007",
+        "custodianId": "77326e8c-08d0-4960-8271-ea430693593e",
+        "holdings": [
+          {
+            "id": "d4e5f6a7-b8c9-4d5e-9f0a-1b2c3d4e5f6a",
+            "ticker": "SPY",
+            "units": 25,
+            "unitPrice": 435.50
+          },
+          {
+            "id": "e5f6a7b8-c9d0-4e5f-9a0b-1c2d3e4f5a6b",
+            "ticker": "ICKAX",
+            "units": 40,
+            "unitPrice": 500.00
+          }
+        ]
+      },
+      {
+        "id": "b3143f0e-132a-4c23-a9d1-9a502c97cb91",
+        "name": "Samantha Wells - Brokerage Account",
+        "number": "78165432",
+        "clientId": "fd03ad39-5bb5-4f8a-813f-9a476b673dea",
+        "advisorId": "550e8400-e29b-41d4-a716-446655440007",
+        "custodianId": "c5a06098-8736-4238-983c-2b191ff7f5de",
+        "holdings": [
+          {
+            "id": "f6a7b8c9-d0e1-4f5a-9b0c-1d2e3f4a5b6c",
+            "ticker": "ARKK",
+            "units": 60,
+            "unitPrice": 120.00
+          }
+        ]
+      },
+      {
+        "id": "fae7684b-31ad-4d44-a73b-50a69f2e99ea",
+        "name": "Samantha Wells - SEP IRA",
+        "number": "45123689",
+        "clientId": "fd03ad39-5bb5-4f8a-813f-9a476b673dea",
+        "advisorId": "550e8400-e29b-41d4-a716-446655440007",
+        "custodianId": "77326e8c-08d0-4960-8271-ea430693593e",
+        "holdings": [
+          {
+            "id": "a7b8c9d0-e1f2-4a5b-9c0d-1e2f3a4b5c6d",
+            "ticker": "QQQ",
+            "units": 90,
+            "unitPrice": 370.25
+          }
+        ]
+      },
+      {
+        "id": "84ab31d4-2e3e-44b3-a7d3-5a365c303de3",
+        "name": "Daniel Lee - 529 College Fund",
+        "number": "85214763",
+        "clientId": "a1b4f6e8-7c39-4a83-b09e-6c912aa235f4",
+        "advisorId": "550e8400-e29b-41d4-a716-446655440007",
+        "custodianId": "c5a06098-8736-4238-983c-2b191ff7f5de",
+        "holdings": [
+          {
+            "id": "b8c9d0e1-f2a3-4b5c-9d0e-1f2a3b4c5d6e",
+            "ticker": "VTI",
+            "units": 110,
+            "unitPrice": 215.30
+          }
+        ]
+      },
+      {
+        "id": "789a26d2-612b-4fa6-9c69-8e418b1b8b22",
+        "name": "Emily Davis - Roth IRA",
+        "number": "36974125",
+        "clientId": "f9b716c7-4d35-4f9e-b7e8-3cd91d5b4953",
+        "advisorId": "550e8400-e29b-41d4-a716-446655440007",
+        "custodianId": "77326e8c-08d0-4960-8271-ea430693593e",
+        "holdings": [
+          {
+            "id": "c9d0e1f2-a3b4-4c5d-9e0f-1a2b3c4d5e6f",
+            "ticker": "XLF",
+            "units": 200,
+            "unitPrice": 35.75
+          }
+        ]
+      },
+      {
+        "id": "30c58619-6b89-41f3-bf77-b2a2b83fd785",
+        "name": "Robert White - Traditional IRA",
+        "number": "15935746",
+        "clientId": "b5a2f138-9276-469d-a8a5-3b6bb3d1c1cd",
+        "advisorId": "550e8400-e29b-41d4-a716-446655440007",
+        "custodianId": "c5a06098-8736-4238-983c-2b191ff7f5de",
+        "holdings": [
+          {
+            "id": "d0e1f2a3-b4c5-4d6e-9f0a-1b2c3d4e5f6a",
+            "ticker": "VYM",
+            "units": 75,
+            "unitPrice": 105.60
+          }
+        ]
+      }
+    ]
+  },
+  "securities": [
+    {
+      "id": "2e5012db-3a39-415d-93b4-8b1e3b453c6c",
+      "ticker": "ICKAX",
+      "name": "Delaware Ivy Crossover Credit Fund Class A",
+      "category": "mutual-fund",
+      "dateAdded": "2001-06-07T11:12:56.205Z"
+    },
+    {
+      "id": "7b90c4d5-2c17-4e7b-a4d7-1d6e2a1b3f34",
+      "ticker": "HEMCX",
+      "name": "Hartford Emerging Markets Equity Fund Class C",
+      "category": "mutual-fund",
+      "dateAdded": "2005-09-15T14:30:22.123Z"
+    },
+    {
+      "id": "b0a9a6d3-2f07-4b66-bc42-5d7121d254d3",
+      "ticker": "VOO",
+      "name": "Vanguard S&P 500 ETF",
+      "category": "index-fund",
+      "dateAdded": "2010-09-07T11:12:56.205Z"
+    },
+    {
+      "id": "c3e4f5d6-91b2-4a9d-a27e-7c8d42f6c3b9",
+      "ticker": "SPY",
+      "name": "SPDR S&P 500 ETF Trust",
+      "category": "mutual-fund",
+      "dateAdded": "1993-01-22T11:12:56.205Z"
+    },
+    {
+      "id": "a56d9e71-3f74-4bd4-b2b5-176e9f59e2a5",
+      "ticker": "ARKK",
+      "name": "ARK Innovation ETF",
+      "category": "growth-fund",
+      "dateAdded": "2014-10-31T11:12:56.205Z"
+    },
+    {
+      "id": "f84a2b1d-5c3d-45b2-8761-4e6b9d8a91c3",
+      "ticker": "QQQ",
+      "name": "Invesco QQQ Trust",
+      "category": "etf",
+      "dateAdded": "1999-03-10T11:12:56.205Z"
+    },
+    {
+      "id": "d93b7f28-2c67-4e3e-b1a1-4f3c9e1d7f2e",
+      "ticker": "VTI",
+      "name": "Vanguard Total Stock Market ETF",
+      "category": "equity-fund",
+      "dateAdded": "2001-05-24T11:12:56.205Z"
+    },
+    {
+      "id": "e67c1d4b-9f28-4c3a-b27d-8a3f1b6d5c94",
+      "ticker": "XLF",
+      "name": "Financial Select Sector SPDR Fund",
+      "category": "sector-fund",
+      "dateAdded": "1998-12-16T11:12:56.205Z"
+    },
+    {
+      "id": "f93a5d27-1e42-4b78-934c-6d3f8c1e7b21",
+      "ticker": "VYM",
+      "name": "Vanguard High Dividend Yield ETF",
+      "category": "dividend-fund",
+      "dateAdded": "2006-11-10T11:12:56.205Z"
+    }
+  ]
+}

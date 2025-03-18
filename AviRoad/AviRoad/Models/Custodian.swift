@@ -1,0 +1,53 @@
+//
+//  Custodian.swift
+//  AviRoad
+//
+//  Created by Marwan Tutunji on 14/03/2025.
+//
+
+import CoreData
+
+struct Custodian: Codable, Equatable, Identifiable, Hashable {
+  let id: String
+  let name: String
+  let repId: String?
+  
+  init(id: String, name: String, repId: String? = nil) {
+    self.id = id
+    self.name = name
+    self.repId = repId
+  }
+  
+  init(from entity: CustodianEntity) {
+    id = entity.id ?? ""
+    name = entity.name ?? ""
+    repId = entity.repId
+  }
+}
+
+extension Custodian {
+  var searchableText: String {
+    return "\(name) \(repId ?? "")"
+      .trimmingCharacters(in: .whitespacesAndNewlines)
+      .lowercased()
+  }
+}
+
+//==============================================================================
+
+extension CustodianEntity {
+  convenience init(context: NSManagedObjectContext, structure: Custodian) {
+    self.init(context: context)
+    id = structure.id
+    name = structure.name
+    repId = structure.repId
+  }
+}
+
+extension CustodianEntity: Updatable {
+  func update(entity: CustodianEntity) {
+    entity.id = id
+    entity.name = name
+    entity.repId = repId
+  }
+}

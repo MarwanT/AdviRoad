@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23605" systemVersion="24D70" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="AccountEntity" representedClassName="AccountEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="advisorId" optional="YES" attributeType="String"/>
+        <attribute name="clientId" optional="YES" attributeType="String"/>
+        <attribute name="custodianId" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="number" optional="YES" attributeType="String"/>
+        <relationship name="advisor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AdvisorEntity" inverseName="accounts" inverseEntity="AdvisorEntity"/>
+        <relationship name="holdings" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="HoldingEntity" inverseName="account" inverseEntity="HoldingEntity"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="AdvisorEntity" representedClassName="AdvisorEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="firstName" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="lastName" optional="YES" attributeType="String"/>
+        <attribute name="totalAccounts" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="totalAssets" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="totalClients" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="accounts" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="AccountEntity" inverseName="advisor" inverseEntity="AccountEntity"/>
+        <relationship name="custodians" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CustodianEntity" inverseName="advisor" inverseEntity="CustodianEntity"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="CustodianEntity" representedClassName="CustodianEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="repId" optional="YES" attributeType="String"/>
+        <relationship name="advisor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AdvisorEntity" inverseName="custodians" inverseEntity="AdvisorEntity"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+                <constraint value="repId"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="HoldingEntity" representedClassName="HoldingEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="ticker" optional="YES" attributeType="String"/>
+        <attribute name="unitPrice" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="units" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="account" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AccountEntity" inverseName="holdings" inverseEntity="AccountEntity"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="SecurityEntity" representedClassName="SecurityEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="category" optional="YES" attributeType="String"/>
+        <attribute name="dateAdded" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="ticker" optional="YES" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+</model>
