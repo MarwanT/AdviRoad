@@ -90,7 +90,10 @@ class URLSessionAPIClient<EndpointType: APIEndpoint>: APIClient {
     }
     do {
       let items = try JSONDecoder().decode(T.self, from: data)
-      return Just(items).setFailureType(to: Error.self).eraseToAnyPublisher()
+      return Just(items)
+        .delay(for: .milliseconds(Int.random(in: 200...2000)), scheduler: DispatchQueue.global())
+        .setFailureType(to: Error.self)
+        .eraseToAnyPublisher()
     } catch {
       return Fail<T, Error>(error: APIError.decodingFailed(error)).eraseToAnyPublisher()
     }
