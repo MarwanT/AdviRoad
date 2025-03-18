@@ -79,13 +79,17 @@ struct MockManager {
       for index in 0..<numberOfInstances {
         let entity = HoldingEntity(context: context)
         entity.id = UUID().uuidString.lowercased()
-        entity.ticker = "APPLE\(index)"
+        entity.ticker = tickers.randomElement() ?? tickers[0]
         entity.units = Int16(100 + index)
-        entity.unitPrice = 123.45 + Double(index*3)
+        entity.unitPrice = 123.45 + Double((index+1)*3)
         instances.append(entity)
       }
     }
     return instances
+  }
+  
+  private var tickers: [String] {
+    return ["ICKAX", "HEMCX"]
   }
   
   func securityEntityInstances(_ context: NSManagedObjectContext) -> [SecurityEntity] {
@@ -193,26 +197,32 @@ struct MockManager {
     for index in 0 ..< numberOfInstances {
       let structure = Holding(
         id: UUID().uuidString.lowercased(),
-        ticker: "APPL\(index)",
+        ticker: tickers.randomElement() ?? tickers[0],
         units: index + 1,
-        unitPrice: Double(index) * 40)
+        unitPrice: Double(index+1) * 40)
       instances.append(structure)
     }
     return instances
   }
   
-  func securityInstance(_ numberOfInstances: Int) -> [Security] {
+  func securityInstance() -> [Security] {
     var instances: [Security] = []
-    for index in 0 ..< numberOfInstances {
-      let structure = Security(
-        id: UUID().uuidString.lowercased(),
-        ticker: "APPL\(index)",
-        name: "Awsome Security",
-        category: "mutual-fund",
-        dateAdded: Date()
-      )
-      instances.append(structure)
-    }
+    let first = Security(
+      id: UUID().uuidString.lowercased(),
+      ticker: tickers[0],
+      name: "Awsome Security",
+      category: "mutual-fund",
+      dateAdded: Date()
+    )
+    instances.append(first)
+    let second = Security(
+      id: UUID().uuidString.lowercased(),
+      ticker: tickers[1],
+      name: "Awsome Security",
+      category: "mutual-fund",
+      dateAdded: Date()
+    )
+    instances.append(second)
     return instances
   }
 }

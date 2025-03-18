@@ -391,7 +391,7 @@ final class DataPersistenceTests {
   @Test("Creates securities entities from security structures")
   func createSecurityEntitiesFromSecurityStructures() {
     // Given
-    let structures = mockManager.securityInstance(9)
+    let structures = mockManager.securityInstance()
     
     // When
     let entities = structures.map { security in
