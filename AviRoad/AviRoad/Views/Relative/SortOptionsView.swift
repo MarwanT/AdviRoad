@@ -5,10 +5,11 @@
 //  Created by Marwan Tutunji on 18/03/2025.
 //
 
+import Combine
 import SwiftUI
 
 struct SortOptionsView: View {
-  var viewModel: MainViewModel
+  @ObservedObject var viewModel: MainViewModel
   
   var body: some View {
     HStack {

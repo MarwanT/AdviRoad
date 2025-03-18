@@ -9,20 +9,19 @@ import Combine
 import Foundation
 import SwiftUI
 
-@Observable
-final class AdvisorDetailsViewModel {
-  var advisor: Advisor? {
+
+final class AdvisorDetailsViewModel: ObservableObject {
+  @Published var advisor: Advisor? {
     didSet {
       if firstViewLoad {
         loadAdvisorDetails()
       }
     }
   }
-  var selectedAdvisorName: String?
-  private(set) var isLoading = false
-  private var firstViewLoad: Bool = true
+  @Published  var selectedAdvisorName: String?
+  @Published private(set) var isLoading = false
   
-  private var advisorNameMock: String?
+  private var firstViewLoad: Bool = true
   
   private let advisorsRepository: AdvisorsRepository
   private var cancellables: Set<AnyCancellable> = []

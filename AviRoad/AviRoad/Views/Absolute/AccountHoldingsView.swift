@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AccountHoldingsView: View {
-  var account: Account
+  @State var account: Account
   
   var body: some View {
     List {

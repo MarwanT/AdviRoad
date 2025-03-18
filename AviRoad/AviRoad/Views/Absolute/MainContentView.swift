@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct MainContentView: View {
-  @State var viewModel: MainViewModel = MainViewModel()
+  @StateObject var viewModel: MainViewModel = MainViewModel()
   
   var body: some View {
     NavigationSplitView {

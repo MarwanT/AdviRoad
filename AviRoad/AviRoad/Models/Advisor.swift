@@ -54,6 +54,17 @@ extension Advisor {
   }
 }
 
+extension Advisor: Searchable {
+  var searchableText: String {
+    let custodiansSearchables = custodians.map { $0.searchableText }.joined(separator: " ")
+    let accountsSearchables = accounts?.map { $0.searchableText }.joined(separator: " ") ?? ""
+    let securities = securities?.map { $0.searchableText }.joined(separator: " ") ?? ""
+    return "\(id) \(name) \(totalAssets) \(custodiansSearchables) \(accountsSearchables) \(securities)"
+      .trimmingCharacters(in: .whitespaces)
+      .lowercased()
+  }
+}
+
 extension Advisor: Equatable {
   static func == (lhs: Advisor, rhs: Advisor) -> Bool {
     let equalProperties = lhs.id == rhs.id

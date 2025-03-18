@@ -8,14 +8,16 @@
 import Combine
 import Foundation
 
-@Observable
-final class MainViewModel {
-  var advisors: [Advisor] = []
-  var sortOrderAscending: Bool = true
-  var selectedSortOption: SortOption = .name
-  var isLoading: Bool = false
+
+final class MainViewModel: ObservableObject {
+  @Published var advisors: [Advisor] = []
+  @Published var sortOrderAscending: Bool = true
+  @Published var selectedSortOption: SortOption = .name
+  @Published var isLoading: Bool = false
+  @Published var searchText: String = ""
   
   private let advisorsRepository: AdvisorsRepository
+  private var cachedAdvisors: [Advisor] = []
   private var cancellables: Set<AnyCancellable> = []
   
   private(set) var detailsViewModel: AdvisorDetailsViewModel
@@ -25,6 +27,13 @@ final class MainViewModel {
     detailsViewModel: AdvisorDetailsViewModel = AdvisorDetailsViewModel()) {
       self.advisorsRepository = advisorsRepository
       self.detailsViewModel = detailsViewModel
+      $searchText
+        .debounce(for: .milliseconds(400), scheduler: DispatchQueue.main)
+        .sink(receiveValue: { [weak self] value in
+          print("After Debounce do the search: \(value)")
+          self?.searchAdvisors()
+        } )
+        .store(in: &cancellables)
     }
   
   func loadAdvisors() {
@@ -41,6 +50,7 @@ final class MainViewModel {
         }
       } receiveValue: { [weak self] advisors in
         self?.advisors = advisors
+        self?.cachedAdvisors = advisors
         self?.sortAdvisors()
       }
       .store(in: &cancellables)
@@ -49,6 +59,22 @@ final class MainViewModel {
   func didSelectAdvisor(_ advisor: Advisor) {
     detailsViewModel.advisor = advisor
     detailsViewModel.selectedAdvisorName = advisor.name
+  }
+  
+  func intentToSearchAdvisors(text: String) {
+    searchText = text
+  }
+  
+  private func searchAdvisors() {
+    guard !searchText.isEmpty else {
+      advisors = cachedAdvisors
+      sortAdvisors()
+      return
+    }
+    let lowercasedSearchableText = searchText.lowercased()
+    advisors = cachedAdvisors.filter { advisors in
+      return advisors.searchableText.contains(lowercasedSearchableText)
+    }
   }
   
   func sortAdvisors() {

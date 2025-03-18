@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AdvisorDetailView: View {
-  var viewModel: AdvisorDetailsViewModel
+  @ObservedObject var viewModel: AdvisorDetailsViewModel
   
   var body: some View {
     NavigationStack {

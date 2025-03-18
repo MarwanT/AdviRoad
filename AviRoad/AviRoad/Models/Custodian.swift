@@ -25,6 +25,14 @@ struct Custodian: Codable, Equatable, Identifiable, Hashable {
   }
 }
 
+extension Custodian {
+  var searchableText: String {
+    return "\(name) \(repId ?? "")"
+      .trimmingCharacters(in: .whitespacesAndNewlines)
+      .lowercased()
+  }
+}
+
 //==============================================================================
 
 extension CustodianEntity {

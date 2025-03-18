@@ -29,6 +29,14 @@ struct Holding: Codable, Equatable, Identifiable, Hashable {
   }
 }
 
+extension Holding: Searchable {
+  var searchableText: String {
+    return "\(ticker) \(units) \(unitPrice)"
+      .trimmingCharacters(in: .whitespaces)
+      .lowercased()
+  }
+}
+
 //==============================================================================
 
 extension HoldingEntity {

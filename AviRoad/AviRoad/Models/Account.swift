@@ -56,6 +56,15 @@ extension Account: Equatable {
   }
 }
 
+extension Account: Searchable {
+  var searchableText: String {
+    var holdingsSearchable: String = holdings.map({ $0.searchableText }).joined(separator: " ")
+    return "\(name) (\(number)) \(holdingsSearchable)"
+      .trimmingCharacters(in: .whitespaces)
+      .lowercased()
+  }
+}
+
 //==============================================================================
 
 extension AccountEntity {

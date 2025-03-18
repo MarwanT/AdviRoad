@@ -32,6 +32,14 @@ struct Security: Codable, Equatable, Identifiable, Hashable {
   }
 }
 
+extension Security: Searchable {
+  var searchableText: String {
+    return "\(ticker) \(name) \(category) \(dateAdded.ISO8601Format())"
+      .trimmingCharacters(in: .whitespaces)
+      .lowercased()
+  }
+}
+
 extension Security {
   enum CodingKeys: String, CodingKey {
     case id
