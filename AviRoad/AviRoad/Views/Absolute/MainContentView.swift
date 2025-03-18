@@ -16,9 +16,6 @@ struct MainContentView: View {
       AdvisorsView(viewModel: viewModel)
     } detail: {
       AdvisorDetailView(viewModel: viewModel.detailsViewModel)
-      Text("Selected advisor")
-        .foregroundColor(.gray)
-        .italic()
     }
     .task {
       viewModel.loadAdvisors()
