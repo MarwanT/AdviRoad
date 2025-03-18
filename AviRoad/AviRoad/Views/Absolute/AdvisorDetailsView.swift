@@ -27,12 +27,14 @@ struct AdvisorDetailView: View {
             if let accounts = advisor.accounts, !accounts.isEmpty {
               Section(header: Text("Accounts")) {
                 ForEach(accounts) { account in
-                  VStack(alignment: .leading) {
-                    Text("Name: \(account.name)")
-                    Text("Number: \(account.number)")
-                    Text("Holdings: \(account.holdings.count)")
+                  NavigationLink(destination: AccountHoldingsView(account: account)) {
+                    VStack(alignment: .leading) {
+                      Text("Name: \(account.name)")
+                      Text("Number: \(account.number)")
+                      Text("Holdings: \(account.holdings.count)")
+                    }
+                    .padding(.vertical, 5)
                   }
-                  .padding(.vertical, 5)
                 }
               }
             }
