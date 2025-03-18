@@ -17,6 +17,7 @@ struct Advisor: Codable, Identifiable {
   let totalAccounts: Int
   let custodians: [Custodian]
   let accounts: [Account]?
+  var securities: [Security]?
   
   init(id: String, firstName: String, lastName: String, totalAssets: Double,
        totalClients: Int, totalAccounts: Int, custodians: [Custodian], accounts: [Account]?) {
@@ -28,6 +29,7 @@ struct Advisor: Codable, Identifiable {
     self.totalAccounts = totalAccounts
     self.custodians = custodians
     self.accounts = accounts
+    securities = nil
   }
   
   init(from entity: AdvisorEntity) {
