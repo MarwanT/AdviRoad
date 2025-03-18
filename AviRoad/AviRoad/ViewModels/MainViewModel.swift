@@ -18,9 +18,14 @@ final class MainViewModel {
   private let advisorsRepository: AdvisorsRepository
   private var cancellables: Set<AnyCancellable> = []
   
-  init(advisorsRepository: AdvisorsRepository = DefaultAdvisorsRepository()) {
-    self.advisorsRepository = advisorsRepository
-  }
+  private(set) var detailsViewModel: AdvisorDetailsViewModel
+  
+  init(
+    advisorsRepository: AdvisorsRepository = DefaultAdvisorsRepository(),
+    detailsViewModel: AdvisorDetailsViewModel = AdvisorDetailsViewModel()) {
+      self.advisorsRepository = advisorsRepository
+      self.detailsViewModel = detailsViewModel
+    }
   
   func loadAdvisors() {
     isLoading = true
@@ -39,6 +44,11 @@ final class MainViewModel {
         self?.sortAdvisors()
       }
       .store(in: &cancellables)
+  }
+  
+  func didSelectAdvisor(_ advisor: Advisor) {
+    detailsViewModel.advisor = advisor
+    detailsViewModel.selectedAdvisorName = advisor.name
   }
   
   func sortAdvisors() {

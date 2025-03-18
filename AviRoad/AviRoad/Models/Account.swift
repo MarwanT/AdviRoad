@@ -8,7 +8,7 @@
 import CoreData
 import Foundation
 
-struct Account: Codable, Identifiable {
+struct Account: Codable, Identifiable, Hashable {
   let id: String
   let name: String
   let number: String

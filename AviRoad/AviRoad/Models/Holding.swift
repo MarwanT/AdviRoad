@@ -8,7 +8,7 @@
 import CoreData
 import Foundation
 
-struct Holding: Codable, Equatable, Identifiable {
+struct Holding: Codable, Equatable, Identifiable, Hashable {
   let id: String
   let ticker: String
   let units: Int

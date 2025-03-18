@@ -8,7 +8,7 @@
 import CoreData
 import Foundation
 
-struct Security: Codable, Equatable, Identifiable {
+struct Security: Codable, Equatable, Identifiable, Hashable {
   let id: String
   let ticker: String
   let name: String

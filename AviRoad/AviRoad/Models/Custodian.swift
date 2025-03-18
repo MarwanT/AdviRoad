@@ -7,7 +7,7 @@
 
 import CoreData
 
-struct Custodian: Codable, Equatable, Identifiable {
+struct Custodian: Codable, Equatable, Identifiable, Hashable {
   let id: String
   let name: String
   let repId: String?

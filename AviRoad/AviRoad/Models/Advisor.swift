@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-struct Advisor: Codable, Identifiable {
+struct Advisor: Codable, Identifiable, Hashable {
   let id: String
   let firstName: String
   let lastName: String
