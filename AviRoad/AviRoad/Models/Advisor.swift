@@ -48,6 +48,12 @@ struct Advisor: Codable, Identifiable {
   }
 }
 
+extension Advisor {
+  var name: String {
+    "\(firstName) \(lastName)".capitalized.trimmingCharacters(in: .whitespaces)
+  }
+}
+
 extension Advisor: Equatable {
   static func == (lhs: Advisor, rhs: Advisor) -> Bool {
     let equalProperties = lhs.id == rhs.id
