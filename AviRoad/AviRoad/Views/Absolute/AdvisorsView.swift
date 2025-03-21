@@ -30,6 +30,7 @@ struct AdvisorsView: View {
             ForEach(viewModel.advisors) { advisor in
               VStack(alignment: .leading) {
                 Text(advisor.name)
+                  .foregroundStyle(viewModel.selectedSortOption == .name ? .blue : .primary)
                   .font(.headline)
                 Text("Assets: \(advisor.totalAssets, specifier: "%.2f")")
                   .foregroundStyle(viewModel.selectedSortOption == .assets ? .blue : .primary)
