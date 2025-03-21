@@ -176,6 +176,7 @@ However given more time and in case this is a real application developed for rel
 - <ins>**IDs** |</ins> Use the _UUID_ type for Ids instead of _String_
 - <ins>**SwiftUI** |</ins> As SwiftUI is relatively a new technlogy I am currently learning and developing my skills in, I would take my time readjusting and experimenting optimising better the views segragation, reusability and loading the data
 - <ins>**Pagination** |</ins> Consider paginating the APIs
+- <ins>**Background** |</ins> Perform the core data operations on the background thread
 
 ## Next Step
 
